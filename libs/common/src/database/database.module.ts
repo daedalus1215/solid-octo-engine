@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 
-@Module({})
-export class DatabaseModule {}
+@Module({
+    imports: [MongooseModule.forRoot('mongodb://localhost/sleepr')]
+})
+export class DatabaseModule { }
