@@ -1,29 +1,23 @@
-FROM node:alpine As development
+# Build Image
+FROM node:20.16.0
 
-WORKDIR /usr/src/app
+# Set up app directory
+ENV PORT=3001
+ARG WORK_DIR=/usr/src/app
+WORKDIR $WORK_DIR
 
-COPY package.json ./
-COPY package-lock.json ./
-
-RUN npm install
-
+# copy package files
+COPY package*.json ./
 COPY . .
+
+RUN npm install -g @nestjs/cli
+RUN npm install
 
 RUN npm run build
 
-FROM node:alpine as production
+RUN node -v
 
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
+# Ports
+EXPOSE 80 443 3000
 
-WORKDIR /usr/src/app
-
-COPY package.json ./
-COPY package-lock.json ./
-
-
-RUN npm install --prod
-
-COPY --from=development /usr/src/app/dist ./dist
-
-CMD ["node", "dist/apps/reservations/main"]
+CMD ["node", "dist/apps/reservations/main.js"]
