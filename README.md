@@ -15,4 +15,4 @@ NestJS microservices: build &amp; deploy a scaleable backend
 # Docker
 1. cd apps/reservations
 2. docker build ../../ -f Dockerfile -t sleepr_reservations
-3. 
+3. docker-compose up
