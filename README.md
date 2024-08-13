@@ -9,3 +9,4 @@ NestJS microservices: build &amp; deploy a scaleable backend
 4. nest g app reservations // turns project into a mono repo
 5. nest g resources reservations
  1. Chose CRUD & RestAPI
+6. nest g module logger
