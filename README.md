@@ -10,3 +10,9 @@ NestJS microservices: build &amp; deploy a scaleable backend
 5. nest g resources reservations
  1. Chose CRUD & RestAPI
 6. nest g module logger
+
+
+# Docker
+1. cd apps/reservations
+2. docker build ../../ -f Dockerfile -t sleepr_reservations
+3. 
