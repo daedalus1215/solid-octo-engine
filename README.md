@@ -16,3 +16,11 @@ NestJS microservices: build &amp; deploy a scaleable backend
 1. cd apps/reservations
 2. docker build ../../ -f Dockerfile -t sleepr_reservations
 3. docker-compose up
+
+
+# auth microservice - env file
+* JWT_SECRET=4Yd0fiPtydfsdfdsdfsdfsdf
+* JWT_EXPIRATION=3600
+
+# reservation microservice - env file
+* MONGODB_URI=mongodb://mongo:27017/sleepr
