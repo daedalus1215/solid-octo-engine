@@ -8,7 +8,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import Joi from 'joi';
 
 @Module({
-  imports: [UsersModule,
+  imports: [
+    UsersModule,
     LoggerModule,
     ConfigModule.forRoot({
       isGlobal: true,
@@ -16,6 +17,7 @@ import Joi from 'joi';
         MONGODB_URI: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
         JWT_EXPIRATION: Joi.string().required(),
+        PORT: Joi.number().required()
       })
     }),
     JwtModule.registerAsync({
