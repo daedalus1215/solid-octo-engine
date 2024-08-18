@@ -7,6 +7,8 @@ import { ReservationDocument, ReservationSchema } from './models/reservation.sch
 import { LoggerModule } from '@app/common/logger/logger.module';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
+import { ClientsModule, Transport } from '@nestjs/microservices';
+import { AUTH_SERVICE } from '@app/common/constants/services';
 
 @Module({
   imports: [
@@ -22,6 +24,7 @@ import * as Joi from 'joi';
     DatabaseModule.forFeature([
       { name: ReservationDocument.name, schema: ReservationSchema }
     ]),
+    ClientsModule.register([{ name: AUTH_SERVICE, transport: Transport.TCP }])
   ],
   controllers: [ReservationsController],
   providers: [ReservationsService, ReservationsRepository],
