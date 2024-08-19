@@ -16,6 +16,7 @@ export class ReservationsController {
 
   @Get()
   findAll() {
+    console.log('find All Reservation controller')
     return this.reservationsService.findAll();
   }
 
