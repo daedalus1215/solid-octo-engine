@@ -2,6 +2,7 @@ import { CanActivate, ExecutionContext, Inject, Injectable } from "@nestjs/commo
 import { map, Observable, tap } from "rxjs";
 import { AUTH_SERVICE } from "../constants/services";
 import { ClientProxy } from "@nestjs/microservices";
+import { UserDto } from "../dto/user.dto";
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
@@ -19,7 +20,7 @@ export class JwtAuthGuard implements CanActivate {
             return false;
         }
 
-        return this.authClient.send('authenticate', {
+        return this.authClient.send<UserDto>('authenticate', {
             Authentication: jwt
         })
             .pipe(
@@ -37,10 +38,10 @@ function getToken(authString: any): string | null {
         // If it's an array, get the first item
         authString = authString[0];
     }
-    
+
     if (typeof authString === 'string' && authString.startsWith('Authentication=')) {
         return authString.substring('Authentication='.length);
     }
-    
+
     return null;
 }
