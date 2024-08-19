@@ -9,11 +9,11 @@ export class ReservationsService {
 
   }
 
-  create(createReservationDto: CreateReservationDto) {
+  create(createReservationDto: CreateReservationDto, userId: string) {
     return this.reservationsRepository.create({
       ...createReservationDto,
       timestamp: new Date(),
-      userId: '123' //@TODO: Pull this off of the JWT.
+      userId: userId
     })
   }
 
