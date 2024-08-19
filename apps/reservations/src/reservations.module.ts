@@ -17,7 +17,7 @@ import { AUTH_SERVICE } from '@app/common/constants/services';
       isGlobal: true,
       validationSchema: Joi.object({
         MONGODB_URI: Joi.string().required(),
-        AUTH_HOST: Joi.number().required(),
+        AUTH_HOST: Joi.string().required(),
         AUTH_PORT: Joi.number().required(),
       })
     }),
